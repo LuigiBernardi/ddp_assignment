@@ -33,21 +33,40 @@ shinyServer(function(input, output) {
         
         plot(x = ToothGrowth$dose, y = ToothGrowth$len,
              col = c("darkgoldenrod3", "darkorchid4")[unclass(ToothGrowth$supp)],
-             pch=16,
-             xlab = "Vitamin C dose (mg/day)",  ylab = "Length")
+             pch = 16,
+             xlab = "Vitamin C dose (mg/day)",  ylab = "Length",
+             xlim = c(0, 2.5))
         if(input$showDose){
             abline(v = doseInput, col = "coral", lwd = 1.5)
         }
         if(input$showPred1){
             abline(h = lm1pred(), col = "steelblue", lwd = 1.5)
+            points(x = -0.08, y = lm1pred(), col = "steelblue", pch = 16)
         }
         if(input$showPred2){
             abline(h = lm2pred(), col = "aquamarine3", lwd = 1.5)
+            points(x = -0.08, y = lm2pred(), col = "aquamarine3", pch = 16)
         }
-        legend(0.47, 34,
-               c("Orange juice", "Ascorbic acid"),
-               pch = 16,
-               col = c("darkgoldenrod3", "darkorchid4"))
+        if(input$showPred1 & input$showPred2){legend(0, 34,
+                                                     c("Orange juice", "Ascorbic acid", "Model 1 prediction", "Model 2 prediction"),
+                                                     pch = 16,
+                                                     col = c("darkgoldenrod3", "darkorchid4", "steelblue", "aquamarine3"))
+        }
+        if(input$showPred1 & !input$showPred2){legend(0, 34,
+                                                      c("Orange juice", "Ascorbic acid", "Model 1 prediction"),
+                                                      pch = 16,
+                                                      col = c("darkgoldenrod3", "darkorchid4", "steelblue"))
+        }
+        if(!input$showPred1 & input$showPred2){legend(0, 34,
+                                                      c("Orange juice", "Ascorbic acid", "Model 2 prediction"),
+                                                      pch = 16,
+                                                      col = c("darkgoldenrod3", "darkorchid4", "aquamarine3"))
+        }
+        if(!input$showPred1 & !input$showPred2){legend(0, 34,
+                                                      c("Orange juice", "Ascorbic acid"),
+                                                      pch = 16,
+                                                      col = c("darkgoldenrod3", "darkorchid4"))
+        }
     })
     
     output$pred1 <- renderText({
