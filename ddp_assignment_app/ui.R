@@ -40,8 +40,8 @@ shinyUI(fluidPage(
                                             choices = c("Orange juice" = "OJ", "Ascorbic acid" = "VC"),
                                             selected = "OJ"),
                                 checkboxInput("showDose", "Show/Hide selected dose", value = TRUE),
-                                checkboxInput("showPred1", "Show/Hide model 1 prediction", value = FALSE),
-                                checkboxInput("showPred2", "Show/Hide model 2 prediction", value = FALSE)
+                                checkboxInput("showPred1", "Show/Hide model 1 prediction", value = TRUE),
+                                checkboxInput("showPred2", "Show/Hide model 2 prediction", value = TRUE)
                             ),
                             mainPanel(
                                 tabsetPanel(type = "tabs",
