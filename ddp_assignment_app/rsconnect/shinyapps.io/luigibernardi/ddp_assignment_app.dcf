@@ -1,0 +1,12 @@
+name: ddp_assignment_app
+title: ddp_assignment_app
+username:
+account: luigibernardi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2193487
+bundleId: 3070981
+url: https://luigibernardi.shinyapps.io/ddp_assignment_app/
+when: 1587980823.81811
+asMultiple: FALSE
+asStatic: FALSE
